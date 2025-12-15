@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /*속성값이 특정 텍스트를 포함하는 요소 */
+        span[class*="item"] {
+            text-decoration: underline;
+        }
+        /* 속성값이 특정 텍스트로 시작하는 요소 */
+        span[class^="fruit"] {
+            color: tomato;
+        }
+        span[class^="vege"] {
+            color: olivedrab;
+        }
+        /* 속성값이 특정 텍스트로 끝나는 요소 */
+        span[class$="-1"] {
+            font-weight: bold;
+        }
+    </style>
+    <title>classname.hmtl</title>
+</head>
+<body>
+    <span class="fruit-item-1">사과</span>
+    <span class="fruit-item-2">딸기</span>
+    <span class="fruit-item-3">포도</span>
+    <span class="vege-item-1">오이</span>
+    <span class="vege-item-2">당근</span>
+    <span class="vege-item-3">가지</span>
+</body>
+</html>

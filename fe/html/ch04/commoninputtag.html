@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>commoninputtag.html</title>
+</head>
+<body>
+    <h1>인풋 요소 공통(대부분) 속성</h1>
+    <form action="#">
+      <label>
+        value<input type="text" name=val value="지정됨">
+      </label>
+      <br><br>
+      <label>
+        autuofocus <br> <input type="text" name="val2" placeholder="자동 포커스됨" autofocus>
+      </label>
+      <br><br>
+      <label>
+        readonly <br> <input type="text" name="val3" value="읽기만 가능, 전송됨" readonly>
+      </label>
+      <br><br>
+      <label>
+        disabled <br> <input type="text" name="val4" placeholder="입력 불가, 전송 안 됨" disabled>
+      </label>
+      <br><br>
+      <label>
+        required <br> <input type="text" name="val5" placeholder="필수 입력!" required>
+        </label>
+        <br><br>
+        <input type="radio" name="fruit" id="f_apple" value="apple" checked>
+        <label>
+          사과 <input type="radio" name="fruit" id="f_grape" value="grape">
+        </label>
+        <label>
+          포도 <input type="radio" name="fruit" id="f_orange" value="orange" disabled>
+        </label>
+        <label for="f_orange">오렌지(품절)</label>
+      <br><br>
+      <button>제출</button>
+    </form>
+</body>
+</html>

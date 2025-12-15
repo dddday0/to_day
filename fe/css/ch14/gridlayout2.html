@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { margin: 0; }
+        main { width: 100vw; display: grid; 
+            /* grid-template-columns: 가로를 몇 칸으로 구성할지 설정
+            200px 1fr 300px >> 3칸으로 구성하겠다.
+                                첫번째 칸은 가로 크기 200px
+                                두번째 칸은 남은 공간 모두 차지
+                                세번째 칸은 가로 크기 300px*/
+            grid-template-columns: 200px 1fr 300px; 
+            /* grid-template-rows 세로를 몇 칸으로 구성할지 설정
+                80px 200px auto 200px >> 첫번째 줄은 세로 크기 80px
+                                        두번째 줄은 세로 크기 200px
+                                        세번째 줄은 1fr과 유사
+                                        네번째 줄은 세로 크기 200px 
+                                        */
+            grid-template-rows: 80px 200px auto 200px;
+            gap: 12px;
+            grid-template-areas: 
+                "nav nav nav"
+                "aside sec-1 sec-1"
+                "aside sec-2 sec-3"
+                "footer footer footer";
+
+        }
+
+        main > * {
+            padding: 0.8em;
+            color: slateblue;
+            background-color: lavender;
+        }
+        .sec-2 div {
+            margin: 1em;
+            padding: 1.6em;
+            line-height: 2.4em;
+            font-family: serif;
+            color: #555;
+            background-color: white;
+        }
+        nav { grid-area: nav;}
+        aside { grid-area: aside;}
+        .sec-1 { grid-area: sec-1;}
+        .sec-2 { grid-area: sec-2;}
+        .sec-3 { grid-area: sec-3;}
+        footer { grid-area: footer;}
+    </style>
+    <title>gridlayout.html</title>
+</head>
+<body>
+    <main>
+        <nav>nav</nav>
+        <aside>aisde</aside>
+        <section class="sec-1">.sec-1</section>
+        <section class="sec-2">
+            .sec-2
+            <div>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                <br>Beatae dolore laudantium esse voluptates praesentium officiis.<br>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae dolore laudantium esse voluptates praesentium officiis.
+            </div>
+            </section>
+            <section class="sec-3">.sec-3</section>
+        </section>
+        <footer>footer</footer>
+    </main>
+</body>
+</html>

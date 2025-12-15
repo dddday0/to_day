@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 기본 정방향,  main axis(메인축),  좌측 => 우측 왼쪽=> 오른쪽
+            방향(메인축)을 변경하고 싶다면, flex-direction 속성값 변경.
+
+            -row (왼 > 오) -크로스 방향 (위>아래)
+            -row-reverse (오 > 왼) -크로스 방향 (위>아래)
+            column (위 > 아래) -크로스 방향 (가로)
+            -column-reverse (아래 > 위) -크로스 방향 (가로)
+            정방향(메인축) 컨트롤은 justify-content 속성으로 조정
+
+            -flex-start(default): 정방향의 시작위치로 붙는다.
+            -flex-end 정뱡향의 끝 위치로 붙는다
+            -center: 중앙정렬
+            -space-evenly: 간격이 모두 동일
+            -space-between: 첫 시작과 마지막 자식은 양쪽 끝에 붙고 나머지는 간격이 모두 동일
+            -space-around: 자식의 양쪽 간격이 모두 동일
+                            자식간 간격은 중첩
+
+            크로스 방향(크로스축) 컨트롤은 align-items 속성으로 조정
+            -stretch(default):남는 공간을 모두 차지한다.
+            -flex-start: 크로스방향의 시작위치로 붙는다.
+            -flex-end: 크로스방향의 끝위치로 붙는다.
+            -center: 중앙정렬
+            -          
+            */
+        .container { 
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        background-color: #ccc; width: 500px; height: 500px; }
+        .container > div { background-color: slateblue; color: white;
+        min-width: 48px; min-height: 48px; 
+        padding: 12px;
+        border: 1px solid #ccc; }
+    </style>
+    <title>flex_study2.html</title>
+</head>
+<body>
+    <div class="container">
+        <div style="flex-grow: 1;">A</div>
+        <div>B</div>
+        <div>C</div>
+        <div>D</div>
+        <div>E</div>
+    </div>
+</body>
+</html>

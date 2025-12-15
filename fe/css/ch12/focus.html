@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 인풋 등이 클릭되어 포커스된 (입력을 받는) 상태 */
+        input[type="text"]:focus {
+            /* border 밖의 선(박스 요소가 아님) */
+            outline: 2px solid dodgerblue;
+        }
+        /* 필수 입력 요소 */
+        input:required { 
+            border-color: orangered;
+        }
+        /* 값이 유효한 입력 요소 */
+        input[type="email"]:valid {
+            border-color: green;
+        }
+        /* 값이 무효한 입력 요소 */
+        input[type="email"]:not(:valid) {
+            border-color: purple;
+        }
+    </style>
+    <title>focus.html</title>
+</head>
+<body>
+    <label for="ti-1">일반</label>
+    <input type="text" id="ti-1">
+    <br>
+    <label for="ti-2">필수</label>
+    <input type="text" id="ti-2" required>
+    <br>
+    <label for="ti-3">조건</label>
+    <input type="email" placeholder="이메일 주소" id="ti-3">
+    <br>
+</body>
+</html>

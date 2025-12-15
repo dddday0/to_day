@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 체크된 것 */
+        input[type=radio]:checked+label{
+            color: tomato;
+            font-weight: bold;
+        }
+        /* 활성화 된 것 */
+        input[type=radio]:enabled+label{
+            text-decoration: underline;
+        }
+        /* 비활성화 된 것 */
+        input[type=radio]:disabled+label{
+            color: lightgray;
+            text-decoration: line-through;
+        }
+    </style>
+    <title>option.html</title>
+</head>
+<body>
+    <input type="radio" name="r" id="cb1"><label for="cb1">옵션 1</label>
+    <input type="radio" name="r" id="cb2"><label for="cb2">옵션 2</label>
+    <input type="radio" name="r" id="cb3"><label for="cb3">옵션 3</label>
+    <input type="radio" name="r" id="cb4" disabled><label for="cb4">옵션 4</label>
+</body>
+</html>

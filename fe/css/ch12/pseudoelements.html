@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-size: 1.2em;}
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        p { width: 400px; }
+        input { font-size: 1.1em; }
+
+        /* 바로 뒤에 가상 요소 추가 */
+        li.later::after { 
+            content: '다음 강좌';
+            margin-left: 0.6em;
+            padding: 0.16em 0.36em;
+            font-size: 0.72em;
+            font-weight: bold;
+            color: white;
+            background-color: darkmagenta;
+            border-radius: 0.2em;
+        }
+
+        /* 바로 앞에 가상 요소 추가 */
+        li::before {
+            content: '✅';
+            display: inline-block;
+            margin: 0 0.4em;
+            width: 0.8em;
+            height: 0.8em;
+            background-image: url(.check.png);
+            background-size: contain;
+        }
+    </style>
+    <title>pseudoelements.html</title>
+</head>
+<body>
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li class="later">JavaScript</li>
+    </ul>
+</body>
+</html>

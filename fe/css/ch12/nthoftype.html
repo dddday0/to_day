@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-size: 1.2em;}
+        div { margin-bottom: 1em;}
+        div * { margin-right: 8px;}
+        b { color: dodgerblue; }
+        i { color: orangered; }
+
+        /* 부모 요소 내 첫 번째 ~요소 */
+        b:first-of-type {
+            text-decoration: overline;
+        }
+        /* 부모 요소 내 마지막 ~요소 */
+        i:last-of-type {
+            text-decoration: line-through;
+        }
+    </style>
+    <title>nthoftype.html</title>
+</head>
+<body>
+    <div>
+        <i>i요소</i>
+        <b>b요소</b>
+        <b>b요소</b>
+        <i>i요소</i>
+        <em>em요소</em>
+        <b>b요소</b>
+        <i>i요소</i>
+        <i>i요소</i>
+        <b>b요소</b>
+    </div>
+    <div>
+        <span>독자</span>
+    </div>
+</body>
+</html>

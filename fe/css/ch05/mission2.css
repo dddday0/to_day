@@ -1,0 +1,5 @@
+.card { background-color: #eee}
+/* div로 태그 줘도 가능한 것 같음 */
+.card.highlight { background-color: #ffeb3b;}
+/* highlight + vip 조합이 id보다 구체적이도록 작성 */
+#vip { background-color: #f44336; }

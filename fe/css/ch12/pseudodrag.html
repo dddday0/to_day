@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 선택 영역 가상 요소 */
+        .orange::selection {
+            background-color: orange;
+        }
+        .dark::selection {
+            color: lightgreen;
+            background-color: #222;
+        }
+    </style>
+    <title>pseudodrag.html</title>
+</head>
+<body>
+    <p>
+        이 문단을 드래그해서 선택해 보세요. <span class="orange">이 부분은 오렌지 색 
+        배경으로, </span> <span class="dark">이 부분은 다크한 테마로</span> 선택 영역에
+        보여지게 될 것입니다.
+    </p>
+</body>
+</html>
