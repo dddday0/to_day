@@ -34,7 +34,7 @@ console.log(' !(n1 != n2):', ! (n1 != n2 )); /* ! 느낌표는 Not (반대) , �
 
 console.log('---------------------논리 연산자 && (AND)' );
 console.log(' true && true:', true && true );
-console.log(' true && true && false:', true && true && false );
+console.log(' true && true && false:', true && true && false ); // true && true 부터 연산
 
 console.log('---------------------논리 연산자 ||(OR)' );
 console.log(' false || false:', false || false );

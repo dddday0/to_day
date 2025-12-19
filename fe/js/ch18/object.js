@@ -1,8 +1,11 @@
 /* object.js
-자바스크립트에서 객체를 만드는 방법
+자바스크립트에서 객체를 만드는 방법 {} 중괄호로 만든다.
 
 객체는 속성, 메소드(Method)로 이루어질 수 있다.
+-속성은 값을 담기 위한 저장 공간
 key(키): 값(value 속성값 or 함수 (fuction))
+-value가 일반 값이면 -> 속성(property)
+-value가 함수면 -> 메소드(method), 기능
 객체 안에 있는 함수가 메소드
 밖에 띨롱 있으면 함수 
 
@@ -12,23 +15,28 @@ person1에 저장되는 값은 객체의 주소값 하나임
 주소값. -> 
 
 let을 쓰면 다른 주소값을 쓸 수 있다.
+const는 다른 주소 대입 X / 객체 내부 값 변경은 가능
 */
 
 const person1 = { 
     name: '김철수3',
     age:25,
     married: false,
-    run: function() { console.log('나는 뛴다');
-}};
+    run: function() { 
+        console.log('나는 뛴다!!');} // <-메소드 
+};
+
+// 객체가 객체 안에 있을 수 있다.
+
 const person2 = person1; //shallow copy (얇은 복사, 주소값 복사)
 console.log('person1.name:', person1.name);
-console.log('person2.name:', person1.name);
+console.log('person2.name:', person2.name);
 person1.name = '홍길동';
-person1.age = 30; // <-속성값을 바꾼 것
+person1.age = 30; // <- 같은 주소 안의 속성값을 바꾼 것
 console.log('person1.name:', person1.name);
-console.log('person2.name:', person1.name);
+console.log('person2.name:', person2.name);
 console.log('person1.age:', person1.age);
-console.log('person2.age:', person1.age);
+console.log('person2.age:', person2.age);
 
 // 객체 자체를 복사하는 것은 deep copy (깊은 복사, 객체 복사)
 const person3 = {

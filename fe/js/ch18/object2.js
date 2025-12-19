@@ -9,9 +9,9 @@ console.log(typeof person1);
 console.log(person1);
 
 //person1이 가리키고 있는 객체의 married 속성값을 true로 수정하시오.
-//person1.married = true;
+person1.married = true;
 
-console.log(!person1.married);
+//console.log(!person1.married); 항상 값을 변경하고 싶다면 대입연산자 
 console.log(person1.married);
 
 person1['age'] = 30;
