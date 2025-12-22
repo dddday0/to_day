@@ -1,4 +1,4 @@
-/* for_array2.js */
+/* for_of.js */
 
 
 const arr = [ 5, 10, 15, 20, 25, 30, 35, 40 ];
