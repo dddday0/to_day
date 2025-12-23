@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--div # editor 쓰면 바로  -->
+    <title>icon_editor2.html</title>
+</head>
+<body>
+    <h1>ICON EDITOR2</h1>
+    <div id="editor"></div>
+    <script>
+        function makeElement(name, attributes) {
+            const node = document.createElement(name);
+            
+            if( attributes) { 
+                for ( const item in attributes ) {
+                    node.setAttribute(item, attributes[item]); //set 기존의 값을 지우고 대입하는 것. add 추가
+                }
+            }
+            return node;
+        }
+
+        function createIconEditor(target, nx, ny) { // 태그들을 만들 수 있는 것
+            const $inputColor = makeElement('input', { type: 'color'});
+            target.append($inputColor);
+
+            const $inputColorClear = makeElement('input', { type: 'button', value: 'Clear'});
+            target.append($inputColorClear);
+
+            const $table = makeElement('table');
+            target.append($table);
+            $table.style.borderCollapse = 'collapse';
+            $table.style.margintop = '10px';
+
+            for(let y=0; y<ny; y++) { //줄 담당
+                const $tr = makeElement('tr');
+                $table.append($tr);
+                for(let x=0; x<nx; x++) { // 칸 담당
+                    const $td = makeElement('td');
+                    $tr.append($td);
+                    $td.style.width = $td.style.height = '15px';
+                    $td.style.border = '1px solid gray';
+
+                }
+            }
+        }
+
+        const $editor = document.querySelector('#editor');
+        createIconEditor($editor, 20, 20 );
+    </script>
+</body>
+</html>
