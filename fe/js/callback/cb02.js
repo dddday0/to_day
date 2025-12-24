@@ -14,3 +14,6 @@ console.log('-----------')
 arr.forEach((item, idx) => { //forEach는 void 함수; 아무 값도 리턴하지 않음
     console.log(`arr[${idx}]: ${item}`);
 });
+
+
+// forEach 함수: 배열의 처음부터 끝까지 하나씩 꺼내서, 내가 준 함수에 넣어 실행해주는 것
