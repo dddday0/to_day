@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax01.html</title>
+</head>
+<body>
+    <div id="container"></div>
+    <script> 
+        fetch('https://picsum.photos/v2/list')
+        .then(res => res.json()) //외부 라이브러리
+        .then( json => procItems(json))
+        .catch( err => console.log(err))
+
+        const procItems = list => { 
+            
+            const $container = document.querySelector('#container');
+
+            list.forEach( (item, i) => { 
+                const elem = makeItem(item);
+                // 컨테이너에 elem을 append 해주세요.
+            $container.append(elem);
+            }); 
+            
+        }
+
+        const makeItem = data => {
+            console.log('data:', data)
+            //alt 속성에 author 속성에 담긴 값을 넣고 싶어요.
+            const div = document.createElement('div');
+            div.innerHTML =`
+            <img src ="${data.download_url}" alt="${data.author}" >
+            <div><div>
+                `;
+
+            return div;
+        }
+
+        const obj = {
+            name: '홍길동',
+            age: 22,
+            height: 168.4
+        }
+        console.log('obj:', obj);
+
+
+        const jsonObj =JSON.stringify(obj);
+        console.log('jsonObj:', jsonObj);
+        const obj2 = JSON.parse(jsonObj);
+        console.log('obj2:', obj2);
+
+    </script>
+</body>
+</html>

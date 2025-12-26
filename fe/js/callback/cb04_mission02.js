@@ -17,4 +17,3 @@ arr.filter(item => !(item % 2))
 .forEach( item => console.log('item:', item) )
 ; 
 
-    
