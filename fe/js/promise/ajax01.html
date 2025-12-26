@@ -4,34 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ajax01.html</title>
+    <style>
+    #page-container span { 
+        display:inline-block; margin-left:  10px;
+        cursor: pointer;
+    }
+    </style>
 </head>
 <body>
+    <div id="page-container"></div>
     <div id="container"></div>
     <script> 
-        fetch('https://picsum.photos/v2/list')
+        const makePageContainer = () => {
+            // <span>1</span> ~ <span>10</span>
+            // 태그를 page-container 안에 생성할 수 있도록 해주세요.
+            const $pageContainer = document.querySelector('#page-container');
+            for(let i=1; i<=10; i++) {
+                const $span = document.createElement('span');
+                $pageContainer.append($span);
+                $span.innerText = i;
+                $span.addEventListener('click', () => {
+                    getData(i);
+                });
+            }
+        }
+        makePageContainer();
+
+        const getData = page => {
+        fetch(`https://picsum.photos/v2/list?limit=50&page=${page}`)
         .then(res => res.json()) //외부 라이브러리
         .then( json => procItems(json))
-        .catch( err => console.log(err))
+        .catch( err => {
+            alert('에러 발생!');
+            console.log(err);
+        });
+        }
+        getData(1);
 
+        const $container = document.querySelector('#container');
+        
+        
         const procItems = list => { 
-            
-            const $container = document.querySelector('#container');
-
+            $container.innerText = null;    
             list.forEach( (item, i) => { 
                 const elem = makeItem(item);
                 // 컨테이너에 elem을 append 해주세요.
             $container.append(elem);
-            }); 
-            
+                }); 
         }
+        
 
         const makeItem = data => {
             console.log('data:', data)
             //alt 속성에 author 속성에 담긴 값을 넣고 싶어요.
+            // 기존 이미지 크기보다 1/10 작은 이미지가 뜰 수 있도록 해주세요. 
+            const width =parseInt(data.width *0.1);
+            const height = parseInt(data.height *0.1);
+            const src = `https://picsum.photos/id/${data.id}/${width}/${height}`;
+            
             const div = document.createElement('div');
+
             div.innerHTML =`
-            <img src ="${data.download_url}" alt="${data.author}" >
-            <div><div>
+            <img src ="${src}" alt="${data.author} 작가가 찍은 사진" >
+            <div>${data.author}<div>
                 `;
 
             return div;
@@ -49,7 +84,12 @@
         console.log('jsonObj:', jsonObj);
         const obj2 = JSON.parse(jsonObj);
         console.log('obj2:', obj2);
+        
 
     </script>
+
+<!--쿼리 스트링/query-string/ 파라미터
+?key=value&key=value-->
 </body>
 </html>
+
