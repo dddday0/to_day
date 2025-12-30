@@ -11,7 +11,7 @@ const visible = { fruit: true };
 const hidden = { fruit: false };
 
 const rect = {
-    backgroundColor: 'red',
+    backgroundColor: 'red', //카멜 케이스로 하면 일대일 
     width: '200px',
     height: '100px'
 };

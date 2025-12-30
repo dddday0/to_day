@@ -5,7 +5,7 @@
 
 <template>
     <div class="front-wheel">
-        <span :id="page">FRONT WHEEL</span>
+        <span :id="page">FRONT WHEEL</span> <!--:id 앞에 v 바인딩 생략가능  :id="" 그냥 문자열이 아니다 -->
         <tire color="BLUE"/>
     </div>
 </template>
