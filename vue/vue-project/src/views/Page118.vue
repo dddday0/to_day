@@ -36,7 +36,7 @@ const increaseMvpId = () => state. mvpId++ ;
 <div>
     <h1> 오늘의 MVP</h1>
     <div>
-        <template v-if="state.mvpId">
+        <template v-if="state.mvpId"> <!--find 값을 못 찾으면 undefined로 처리된다. -->
             {{  state.players.find(m => m.id === state.mvpId)?.name || '없음' }} <!--삼항식으로도 처리가능하나 ?가 간편함-->
         </template>
         <template v-else>없음</template> 
@@ -46,7 +46,7 @@ const increaseMvpId = () => state. mvpId++ ;
         <div>{{ getMvpName() }}</div>
         <div>{{ getMvpName() }}</div> 
     <hr>
-    <!-- 컴퓨티드는 보낸 콜백함수가 딱 한번만 실행이 되고 결과가 return된다. -->
+    <!-- 컴퓨티드는 보낸 콜백함수가 딱 한번만 실행이 되고 결과가 return된다. 캐시 기능이 있다-->
     <div>{{ computedMvpName }}</div>
     <div>{{ computedMvpName }}</div>
     </div>

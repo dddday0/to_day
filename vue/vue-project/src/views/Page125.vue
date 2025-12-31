@@ -3,7 +3,7 @@ import { reactive } from 'vue';
 
 const state = reactive({
     form: {
-        id: '',
+        id: 'abc',
         pw: ''
     }
 });
@@ -11,7 +11,7 @@ const state = reactive({
 const login = () => {
     //예외 처리
     
-    if (state.form.id.length === 0 || !state.form.pw) {
+    if (state.form.id.length === 0 || !state.form.pw) { //  || or은 단, 하나의 true가 있어도 true 
         alert(`아이디 / 패스워드를 작성해 주세요. `);
         return;
     }
@@ -26,7 +26,7 @@ const login = () => {
 <form @submit.prevent="login">
     <input type="text" placeholder="아이디"  v-model="state.form.id">
     <input type="password" placeholder="패스워드"  v-model="state.form.pw">
-    <button>로그인</button>
+    <button>로그인</button> <!--button은 기본적으로 type submit -->
 </form>
 </template>
 

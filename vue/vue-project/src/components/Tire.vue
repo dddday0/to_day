@@ -9,6 +9,5 @@ const props = defineProps({
 <template>
     <div :style="{ color: props.color, backgroundColor: 'black' }">{{ props.color || 'BLACK' }} TIRE</div>
     
-    <div style="color: blue; background-color: black;">blue TIRE</div>
 </template>
 <!--문자열에서 0만 false? 음수, 양수는 true? -->

@@ -1,11 +1,17 @@
 <script setup>
     import Tire from '@/components/Tire.vue';
+    import { useCounterStore } from '@/stores/counter';
     const color = 'yellow';
+
+    const counterStore =useCounterStore();
 </script>
 <template>
     <div class="rear-wheel">
         <span>REAR WHEEL</span>
         <tire :color="YELLOW"/>
+        <div>TIMES: {{ counterStore.count }}</div>
+        <button @click="counterStore.increment">회전</button>
+        <button @click="counterStore.decrement">역회전</button>
     </div>
 </template>
 
