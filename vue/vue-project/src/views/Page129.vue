@@ -5,14 +5,14 @@ import { onMounted, onUpdated, onUnmounted, reactive } from 'vue';
 onMounted( () => console.log('onMounted') );
 
 //element랑 상관없이 최초 1회만 실행하고 싶으면
-//여기(전역)에 작성하면 된다. 
+//여기(전역)에 작성하면 된다. (라이프사이클 훅 밖에 작성된 코드 영역)
 
 // 화면이 갱신(변화) 될 때마다 실행이 된다.
 // 다양하게 사용 가능 
 onUpdated( () => console.log('onUpdated') );
 
 //화면에서 사라지기 전에 최초 1회 실행 \
-//뭔가 작성한 것이 있고 다시 이 화면응로 돌아왓을 때 작성된 것을
+//뭔가 작성한 것이 있고 다시 이 화면으로 돌아왓을 때 작성된 것을
 // 다시 작성하지 않도록 처리할 때. 
 onUnmounted( () => console.log('onUnmounted') );
 const state = reactive( {

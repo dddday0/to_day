@@ -1,7 +1,7 @@
 const arr = [];
 
 /* 미니 미션. 
-arr 배열에 객체 200개를 담는다.
+arr 배열에 객체 100개를 담는다.
 객체는 
 {
     id:1
@@ -28,7 +28,7 @@ let result = null;
 for(let i=1; i<=20; i++) {
     if(arr[i].id === 20 ) {
     result = arr[i];
-    }  
+    }  break;
 }  
 
 console.log(result); 
