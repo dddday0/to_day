@@ -12,11 +12,11 @@
   onMounted( () => state.memos = storageService.getItems() );
   const remove = id => {
     console.log('id:', id)
-    if(!confirm('삭제하시겠습니까?')) {
+    if(!confirm('삭제하시겠습니까?')) { // 데이터를 리턴하기 때문에 컨펌은 리턴함수. if는 불린
       return;
     }
     storageService.delItem(id);
-    state.memos = storageService.getItems();
+    state.memos = storageService.getItems(); // 1개 이상은 배열로 넘어가고, 1개는 객체 primitive 타입 // 페이징 처리?
     router.push('/');
   }
 
@@ -30,7 +30,7 @@
         <div class="d-flex justify-content-between">
           <b>{{ item.title }}</b>
           <div>
-            <!-- click.prevent는  기본 동작(라우터 이동)을 취소한다. //클릭 이벤트 버블링을 금지시키는 것-->
+            <!-- click.prevent는  기본 동작(라우터 이동)을 취소한다. //클릭 이벤트 버블링을 막는 것-->
             <span role="button" @click.prevent="remove(item.id)">삭제</span> 
           </div>
         </div>

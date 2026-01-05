@@ -12,9 +12,9 @@ class StorageService {
 
     //생성자, 객체를 생성하려면 꼭 생성자를 호출해야 합니다. 
     //메소드지만 특별하다. 객체 생성(객체화)할 때만 호출할 수 있다.
-    constructor(storageName) { //파라미터, 객체 생성 때 외부에서 값이 들어온다.
+    constructor(storageName) { //파라미터, 객체 생성 때 외부에서 값이 들어온다. DI 의존성 주입 
         if(!storageName) {
-            throw new Error('스토리지 이름을 입력해주세요.');
+            throw new Error('스토리지 이름을 입력해주세요.'); // error를 일부러 터뜨림?
         }
         this.#storageName = storageName;        
     }
@@ -22,23 +22,24 @@ class StorageService {
     // 스토리지 데이터 조회 p.161
     #getStorageData() {
         const json = localStorage.getItem(this.#storageName);
-        if(json) { return JSON.parse(json); } //json문자열을 객체로 변환 후 리턴
+        if(json) { return JSON.parse(json); } //json문자열을 객체로 변환 후 리턴. 역직렬화
         return {
             data: {},
             lastId: 1
-        }; //빈 객체 리턴
+        }; //초기화 객체 리턴
     }
 
     // 스토리지 데이터 저장 p.161
     #saveStorageData(data) {
-        const json = JSON.stringify(data); //객체(data)를 json문자열(value)로 변환 
-        localStorage.setItem(this.#storageName, json); //value를 localStorage에 저장
+        const json = JSON.stringify(data); //객체(data)를 json문자열(value)로 변환. 직렬화
+        localStorage.setItem(this.#storageName, json); //value를 localStorage에 저장. // this는 상수.
     }
 
     // 신규 항목 추가 p.162
     addItem(item) {
         console.log(item);
         // item = { title: '1', content: '1 내용' }
+
         const storageData = this.#getStorageData(); //기존에 저장된 데이터 가져와(최초 빈 객체가 넘어온다.) {}
         item.id = storageData.lastId; // item = { id: 1, title: '1', content: '1 내용' }
         storageData.data[storageData.lastId++] = item; //{}  >>  { '1': { id: 1, title: '1', content: '1 내용' } }
@@ -47,7 +48,9 @@ class StorageService {
 
     // 전체 항목 조회
     getItems() {
-        return this.#getStorageData().data;
+        const savedData = this.#getStorageData();
+        return savedData.data;
+        // return this.#getStorageData().data;  //체이닝 기법
     }
     
     getItem(id) {
@@ -61,6 +64,12 @@ class StorageService {
         delete storageData.data[id];
         this.#saveStorageData(storageData);
     }
+    
+        setItem(item) { 
+        const storageData = this.#getStorageData();
+        storageData.data[item.id] = item; // 똑같은 속성에 저장하면 된다. 
+        this.#saveStorageData(storageData);
+        }
     
 }
 

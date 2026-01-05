@@ -3,7 +3,7 @@ import { reactive, onMounted } from 'vue';
 import storageService from '@/services/StorageService';
 import { useRoute, useRouter } from 'vue-router';
 
-const router = useRouter(); // 라우터 객체 주소값 얻기 (주소값 이동)
+const router = useRouter(); // 메소드 호출로 라우터 객체 주소값 얻기 (주소값 이동)
 const route = useRoute(); // 라우트 객체 주소값 얻기(PathVariable 값 가져오기)
 
 const state= reactive( {
@@ -13,8 +13,15 @@ const state= reactive( {
     }
 });
 const submit = () => {
-    storageService.addItem(state.memo);
-    alert('저장하였습니다.')
+    const id = Number(route.params.id);
+    if(id) { 
+        storageService.setItem(state.memo);
+        alert('수정하였습니다.');
+    }  
+    else {
+        storageService.addItem(state.memo);
+        alert('저장하였습니다.');
+    }
     // 라우팅 처리 (path: '/')로 주소값 이동( 화면 전환)
     router.push({
         path: '/'
@@ -40,7 +47,7 @@ onMounted(() => {
             <label for="content" class="form-label">내용</label>
             <textarea id="content" v-model="state.memo.content"></textarea>
         </div>
-        <button class="btn btn-primary w-100 py-3">저장</button>
+        <button class="btn btn-primary w-100 py-3">{{ route.params.id ? '수정': '저장' }}</button>
     </form>
 
 </template>

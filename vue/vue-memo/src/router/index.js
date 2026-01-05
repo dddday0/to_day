@@ -17,7 +17,7 @@ const router = createRouter({
       component: () => import ('../views/Form.vue')
     },
     {
-      path: '/memos/:id', // path variable (경로 변수)
+      path: '/memos/:id', // path variable (경로 변수) // 분기
       component: () => import ('../views/Form.vue')
     },
   ],
