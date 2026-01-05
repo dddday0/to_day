@@ -69,7 +69,7 @@ class StorageService {
         const storageData = this.#getStorageData();
         storageData.data[item.id] = item; // 똑같은 속성에 저장하면 된다. 
         this.#saveStorageData(storageData);
-        }
+        } // 수정은 항상 결과물 전체가 필요하다. 덮어씌워야 하기에.
     
 }
 

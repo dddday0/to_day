@@ -12,11 +12,13 @@
   onMounted( () => state.memos = storageService.getItems() );
   const remove = id => {
     console.log('id:', id)
-    if(!confirm('삭제하시겠습니까?')) { // 데이터를 리턴하기 때문에 컨펌은 리턴함수. if는 불린
+    if(!confirm('삭제하시겠습니까?')) { // confirm은  true, false를 리턴하는 함수.  if는 불린
       return;
     }
     storageService.delItem(id);
-    state.memos = storageService.getItems(); // 1개 이상은 배열로 넘어가고, 1개는 객체 primitive 타입 // 페이징 처리?
+    state.memos = storageService.getItems(); 
+    // 데이터 개수에 따라 달라질 수 있다.  1개 이상은 배열로 넘어가고, 1개는 객체나 primitive 타입으로 반환. 
+    // 데이터가 많아질 경우  페이징 처리가 필요할 수 있다. 
     router.push('/');
   }
 
