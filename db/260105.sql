@@ -17,7 +17,7 @@ SELECT * FROM book;
 
 -- 도서(book) 테이블에 있는 모든 출판사를 검색
 
-SELECT distinct publisher FROM book;
+SELECT distinct publisher FROM book; -- 중복을 제거한 키워드 distinct
 
 /* 
 FROM절 이후에
