@@ -16,6 +16,10 @@ SET address = '대한민국 부산'
 , NAME = '박세리'
 WHERE custid = 5;
 
+UPDATE customer
+SET address = '대한민국 대전'
+WHERE NAME = '박세리';
+
 -- Q1) book 테이블에서 14번 '러닝 SQL'의 출판사를
 -- imported_book 테이블에 있는  21번 책의 출판사와 동일하게 
 -- 변경
@@ -36,7 +40,7 @@ DELETE FROM customer;
 
 -- 오토커밋, 자동으로 커밋, 커밋은 쿼리 결과 적용 !!!
 
--- 오토커밋 확인
+-- 오토커밋 확인 (1: 적용, 0: 해제)
 SELECT @@autocommit; -- 세션은 공간별, 기본적으로 새로 접속하면 새 세션이 만들어지고, autocommit은 자동
 
 -- 오토커밋 적용
@@ -46,7 +50,7 @@ SET autocommit = 0;
 
 DELETE FROM customer WHERE custid = 5;
 
--- 박세리
+-- 박세리 추가
 INSERT INTO customer
 SET custid = 5
 ,NAME = '박세리'
@@ -70,14 +74,18 @@ SELECT film_id FROM film_category
 GROUP BY film_id
 HAVING COUNT(*) >= 2;
 
--- Q1) 최소 일주일 동안 대여할 수 있는 G등급(rating)의 영화를 찾고 싶다. rental_duration (대여가능기간)
-SELECT rating FROM film
-WHERE rating = 'G' AND rental_duration >=7;
+-- Q1) 최소 일주일 동안 대여할 수 있는 G등급(rating)의 영화를 찾고 싶다. 
+-- rental_duration (대여가능기간)
+SELECT *
+FROM film
+WHERE rating = 'G' 
+AND rental_duration >=7;
 
 /* Q2) 최소 일주일 동안 대여할 수 있는 G등급(rating)의 영화이거나
  PG-13등급이면서 3일 이하로만 대여할 수 있는 영화의 정보
  rental_duration (대여가능기간) */
-SELECT * FROM film
+SELECT * 
+FROM film
 WHERE (rating = 'G' AND rental_duration >=7)
 OR (rating = 'PG-13' AND rental_duration <= 3);
 
@@ -103,16 +111,38 @@ DATE함수 날짜를 리턴한다. */
 SELECT payment_date, DATE(payment_date)  -- row마다 실행되게 하는 함수는 좋지 않다? 성능이 좋지 않다. 
 FROM payment;
 
+SELECT payment_date
+FROM payment
+WHERE payment_date = DATE('2005-10-10 12:12:00');
+
+SELECT payment_date
+FROM payment
+WHERE payment_date = '2005-10-10';
+
+SELECT * FROM payment
+WHERE payment_date > '2005-06-16';
+
+-- 2005-06-16 ~ 2005-06-18일까지
 SELECT * FROM payment
 WHERE payment_date BETWEEN  '2005-06-16' AND '2005-06-19';
 
+SELECT * FROM payment
+WHERE payment_date >= '2005-06-16 00:00:00'
+  AND payment_date <= '2005-06-18 23:59:59';
+
 -- Q4) 2005년 06월 14일에 대여한 모든 고객 정보 
--- (이름, 성, 렌탈 일시)
+-- (이름, 성, 렌탈일시)
 SELECT c.first_NAME AS 이름, c.LAST_NAME AS 성, r.rental_date AS 렌탈일시
 FROM customer c
 JOIN rental r
 ON c.customer_id = r.customer_id
 WHERE r.rental_date BETWEEN '2005-06-14' AND '2005-06-15';
+
+SELECT c.first_name, c.last_name, r.rental_date
+FROM customer c
+INNER JOIN rental r
+ON r.customer_id = c.customer_id
+WHERE DATE(r.rental_date) = '2005-06-14';
 
 -- Q5) 모든 배우의 배우 ID, 이름 및 성을 검색
 -- 성 기준으로 정렬한 다음 이름 기준으로 정렬합니다.
@@ -144,3 +174,6 @@ ON c.customer_id = r.customer_id
 WHERE r.rental_date NOT BETWEEN '2005-06-14 00:00:00' 
 									AND  '2005-06-14 23:59:59';
 
+-- 260108 추가 * 
+-- ex) select from 테이블
+--		WHERE id = 값; => 경우의 수는 2가지가 나온다 (안 나오거나 1개) 
