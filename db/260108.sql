@@ -267,8 +267,3 @@ SET customer_name = '김블루'
 , phone = '010-0000-0000'
 WHERE custid = 1;
 -- updated_at 값도 함께 변경된다. 
-
-
-
-
-
