@@ -183,7 +183,9 @@ WHERE price = 35000; -- 하드코딩, 결과값이 바뀌지 않을 때.
 SELECT * FROM book 
 WHERE price = (SELECT MAX(price) FROM book);
 
-/* where equal 사용할 때는  스칼라값만 사용 가능 
+/* where equal 사용할 때는  스칼라값만 사용 가능.
+++ select- from 사이도 가능
+++ from 절/ 테이블명이 와야 되는 자리에 있는 서브쿼리를 인라인뷰라고 한다.
 row 1줄 column 1개 (1행 1열)를 스칼라값(값 하나)이라고 하며,
 위의 서브쿼리를 스칼라 서브쿼리라고 부른다. 
 */
