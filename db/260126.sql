@@ -6,3 +6,7 @@ CREATE TABLE board(
 	, created_at DATETIME NOT NULL DEFAULT current_timestamp
 	, updated_at DATETIME ON UPDATE CURRENT_TIMESTAMP
 );
+
+SELECT id, title, created_at
+FROM board
+ORDER BY id DESC;

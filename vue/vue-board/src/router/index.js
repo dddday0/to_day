@@ -11,8 +11,18 @@ const router = createRouter({
     },
 
     {
+      path: '/mod/:id',
+      component: () => import('../views/WriteMod.vue'),
+    },
+
+    {
       path: '/',
       component: () => import('../views/BoardList.vue'),
+    },
+
+    {
+      path: '/detail/:id',
+      component: () => import('../views/BoardDetail.vue'),
     },
   ],
 })

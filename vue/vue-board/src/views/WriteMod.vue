@@ -1,13 +1,17 @@
 <script setup>
-import { reactive } from 'vue';
-import { useRouter } from 'vue-router';
+import { onMounted, reactive } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import httpService from '@/services/httpService';
+
+//Path variable 사용할 때
+const route = useRoute();
 
 //주소 이동할 때
 const router = useRouter();
 
 const state = reactive({
     board: {
+        id: 0,
         title: '',
         contents: ''
     }
@@ -25,8 +29,11 @@ const submit = async () => {
         alert('내용을 입력해 주세요!');
         return;
     }
-    const result = await httpService.save(state.board);
-    console.log('result:', result);
+
+    if(state.board.id === 0 ){
+        const result = await httpService.save(state.board);
+        console.log('result:', result);
+    
 
     //result가 성공이면 제목, 내용 적혀있는 거 모두 삭제해 주세요.
     if(result === "성공"){
@@ -35,8 +42,23 @@ const submit = async () => {
         router.push({
             path:'/'
         });
+    } else {
+        alert('등록에 실패하였습니다.');
+        } 
+    } else { //수정
+        const result = await httpService.update(state.board);
+        if(result) {
+            router.push(`/detail/${state.board.id}`) //디테일 화면으로 이동!!
+        }
     }
 }
+    onMounted(async () => {
+        if(route.params.id){
+            const id = route.params.id;
+            state.board = await httpService.findById(id);
+        }
+    });
+
 
 </script>
 
