@@ -13,7 +13,7 @@ const router = createRouter({
       component: PracticeList,
     },
     
-    
+  
     {
       path: '/write',
       name: 'wirtemod',
@@ -21,7 +21,14 @@ const router = createRouter({
     },
 
     {
-      path: '/detail',
+      path: '/mod/:id',
+      name: 'updatemod',
+      component: WriteMod,
+    },
+
+
+    {
+      path: '/detail/:id',
       name: 'practicedetail',
       component: PracticeDetail,
     }

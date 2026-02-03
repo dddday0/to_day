@@ -13,7 +13,7 @@ class HttpService {
             return res.data;
     };
 
-    async findById({id})  {
+    async findById(id)  {
         const res = await axios.get(`${"/practice"}/${id}`)
         return res.data;
     };
@@ -28,22 +28,5 @@ class HttpService {
         return res.data;
     };
 
-
 }
-
-export default new HttpService();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export default new HttpService(); 

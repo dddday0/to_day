@@ -12,7 +12,7 @@ const state = reactive({
     practice: {
     id: 0,
     title: '',
-    contents: ''
+    contents: '',
     }
 });
 
@@ -25,12 +25,13 @@ const submit = async () => {
     return;
 } 
 
-const result = await (state.practice.id? upd(state.practice) : httpService.save(state.practice) )
+const result = await (state.practice.id? httpService.ud(state.practice) :httpService.save(state.practice));
+
 if(!result){
-    alert(`글등록에 실패하였습니다.`);
+    alert(`글${state.mode}에 실패하였습니다.`);
     return;
 }
-const path = state.state.id ? `/detail/${state.practice.id}` : '/home';
+const path = state.practice.id? `/detail/${state.practice.id}` :'/home';
 router.push(path);
 }
 
@@ -38,7 +39,7 @@ router.push(path);
 onMounted(async () => {
     if(route.params.id){
         const id = route.params.id;
-        state.practice = await httpService.findById(id) 
+        state.practice = await httpService.findById(id); 
     }
 });
 

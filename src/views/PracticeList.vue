@@ -43,5 +43,25 @@ const moveToDetail = id => {
 </template>
 
 <style scoped>
-td {cursor: pointer;}
+table { border: 1px solid rgb(0, 0, 0);
+        border-collapse: collapse;
+        background-color: rgb(243, 243, 235);}
+th, td {border: 1px solid rgb(0, 0, 0);
+        padding: 0.5rem;}
+td{ text-align: center;
+    cursor: pointer;
+}
+tr:hover{
+    background-color: lightyellow;
+    color: brown;
+}
+
+tr:first-child{
+    color:black;
+    background-color: beige;
+    cursor: default;
+    
+}
+
+
 </style>
